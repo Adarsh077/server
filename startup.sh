@@ -17,7 +17,8 @@ sudo apt-get -y update
 
 sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-git clone https://github.com/Adarsh077/server.git ./
+git clone https://github.com/Adarsh077/server.git
+mv ./server/* ./
 
 sudo docker compose up -d
 
