@@ -17,23 +17,15 @@ sudo apt-get -y update
 
 sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-sudo groupadd docker
+git clone https://github.com/Adarsh077/server.git ./
 
-sudo usermod -aG docker $USER
+sudo docker compose up -d
 
-newgrp docker
+chmod +x ./backup.sh
+crontab -l > mycron 2>/dev/null
+sed -i '\|'"./backup.sh"'|d' mycron
+echo "0 0 * * * ./backup.sh" >> mycron
+crontab mycron
+rm mycron
 
-docker ps -a
-
-# git clone https://github.com/Adarsh077/server.git ./
-
-# docker compose up -d
-
-# chmod +x ./backup.sh
-# crontab -l > mycron 2>/dev/null
-# sed -i '\|'"./backup.sh"'|d' mycron
-# echo "0 0 * * * ./backup.sh" >> mycron
-# crontab mycron
-# rm mycron
-
-# echo "Backup cron job installed: ./backup.sh at midnight"
+echo "Backup cron job installed: ./backup.sh at midnight"
