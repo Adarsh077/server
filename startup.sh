@@ -23,15 +23,17 @@ sudo usermod -aG docker $USER
 
 newgrp docker
 
-git clone https://github.com/Adarsh077/server.git ./
+docker ps -a
 
-docker compose up -d
+# git clone https://github.com/Adarsh077/server.git ./
 
-chmod +x ./backup.sh
-crontab -l > mycron 2>/dev/null
-sed -i '\|'"./backup.sh"'|d' mycron
-echo "0 0 * * * ./backup.sh" >> mycron
-crontab mycron
-rm mycron
+# docker compose up -d
 
-echo "Backup cron job installed: ./backup.sh at midnight"
+# chmod +x ./backup.sh
+# crontab -l > mycron 2>/dev/null
+# sed -i '\|'"./backup.sh"'|d' mycron
+# echo "0 0 * * * ./backup.sh" >> mycron
+# crontab mycron
+# rm mycron
+
+# echo "Backup cron job installed: ./backup.sh at midnight"
